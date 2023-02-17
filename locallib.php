@@ -106,7 +106,7 @@ function local_concorsi_display_usercards_files($courseid, $contextid, $componen
                 $urldelete = new moodle_url('/local/concorsi/manageusers.php', $query);
                 $downloadlink = html_writer::tag('a', $filename, array('href' => $urldownload));
                 $icon = $OUTPUT->action_icon($urldelete, new pix_icon('t/delete', get_string('delete')));
-                $deletelink = html_writer::tag('a', $icon, array('href' => $url));
+                $deletelink = html_writer::tag('a', $icon, array('href' => $urldelete));
                 echo html_writer::tag('li', $downloadlink . '&nbsp;' . $deletelink);
             }
         }
