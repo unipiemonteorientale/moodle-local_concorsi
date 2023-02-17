@@ -60,7 +60,7 @@ function local_concorsi_pluginfile($course, $cm, $context, string $filearea, arr
         return false;
     }
 
-    if ($filearea !== 'userscards') {
+    if ($filearea !== 'usercards') {
         return false;
     }
 
@@ -72,7 +72,7 @@ function local_concorsi_pluginfile($course, $cm, $context, string $filearea, arr
 
     $itemid = array_shift($args);
 
-    if ($filearea === 'userscards') {
+    if ($filearea === 'usercards') {
         if ($course->id !== $itemid) {
             return false;
         }
