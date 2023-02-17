@@ -17,9 +17,10 @@
 /**
  * Concorsi - Users creation form.
  *
- * @package    local_concorsi
- * @copyright  2023 Roberto Pinna
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package   local_concorsi
+ * @copyright 2023 UPO www.uniupo.it
+ * @author    Roberto Pinna
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
@@ -29,9 +30,10 @@ require_once($CFG->libdir.'/formslib.php');
 /**
  * Concorsi - Users creation form.
  *
- * @package    local_concorsi
- * @copyright  2023 Roberto Pinna
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package   local_concorsi
+ * @copyright 2023 UPO www.uniupo.it
+ * @author    Roberto Pinna
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class createusers_form extends moodleform {
 
@@ -53,6 +55,7 @@ class createusers_form extends moodleform {
             $mform->setType('name', PARAM_ALPHANUM);
 
             $mform->addElement('date_selector', 'date', get_string('publicexamdate', 'local_concorsi'));
+            $mform->setDefault('date', $course->startdate);
 
             $mform->addElement('text', 'users', get_string('numberofusers', 'local_concorsi'));
             $mform->setDefault('users', 0);
@@ -60,7 +63,7 @@ class createusers_form extends moodleform {
 
             $roles = get_assignable_roles($PAGE->context, ROLENAME_BOTH);
             $configroles = explode(',', get_config('local_concorsi', 'roles'));
-            $enabledroles =  array();
+            $enabledroles = array();
             foreach ($roles as $roleid => $role) {
                 if (in_array($roleid, $configroles)) {
                     $enabledroles[$roleid] = $role;
@@ -71,7 +74,7 @@ class createusers_form extends moodleform {
             $mform->setType('course', PARAM_INT);
             $mform->addElement('hidden', 'action', 'add');
             $mform->setType('action', PARAM_ALPHA);
-            
+
             $mform->addElement('submit', 'submitbutton', get_string('addusers', 'local_concorsi'));
         }
     }

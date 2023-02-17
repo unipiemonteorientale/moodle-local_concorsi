@@ -17,12 +17,11 @@
 /**
  * Concorsi lib
  *
- * @package    local_concorsi
- * @copyright  2023 and above Roberto Pinna
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package   local_concorsi
+ * @copyright 2023 UPO www.uniupo.it
+ * @author    Roberto Pinna
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-defined('MOODLE_INTERNAL') || die();
 
 /**
  * Extend Course Navigation block

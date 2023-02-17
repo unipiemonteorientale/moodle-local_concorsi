@@ -18,7 +18,8 @@
  * Settings for the Concorsi.
  *
  * @package   local_concorsi
- * @copyright 2023 and above Roberto Pinna
+ * @copyright 2023 UPO www.uniupo.it
+ * @author    Roberto Pinna
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -37,7 +38,7 @@ if ($hassiteconfig) {
                 $default, $roles));
 
     $choices = array();
-    for ($i=6; $i<=20; $i++) {
+    for ($i = 6; $i <= 20; $i++) {
         $choices[$i] = $i;
     }
     $page->add(new admin_setting_configselect('local_concorsi/usernamelength',

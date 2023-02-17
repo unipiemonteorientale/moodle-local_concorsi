@@ -18,7 +18,8 @@
  * Strings for component 'local_concorsi', language 'en'
  *
  * @package   local_concorsi
- * @copyright 2023 and above Roberto Pinna
+ * @copyright 2023 UPO www.uniupo.it
+ * @author    Roberto Pinna
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

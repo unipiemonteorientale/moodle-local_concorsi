@@ -16,12 +16,25 @@
 
 /**
  * Manage usercards files
+ *
  * @package   local_concorsi
- * @copyright 2023 Roberto Pinna
+ * @copyright 2023 UPO www.uniupo.it
+ * @author    Roberto Pinna
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
+defined('MOODLE_INTERNAL') || die();
+
 require_once($CFG->libdir.'/formslib.php');
 
+/**
+ * Manage usercards files
+ *
+ * @package   local_concorsi
+ * @copyright 2023 UPO www.uniupo.it
+ * @author    Roberto Pinna
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class files_edit_form extends moodleform {
 
     /**

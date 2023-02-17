@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -18,7 +17,8 @@
 /**
  * Manage usercards files
  * @package   local_concorsi
- * @copyright 2023 Roberto Pinna
+ * @copyright 2023 UPO www.uniupo.it
+ * @author    Roberto Pinna
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -26,13 +26,14 @@ require_once('../../config.php');
 require_once(__DIR__ . '/filesedit_form.php');
 require_once($CFG->dirroot . '/repository/lib.php');
 
-// current context
+// Current context.
 $contextid = required_param('contextid', PARAM_INT);
-// file parameters
-$component  = optional_param('component', null, PARAM_COMPONENT);
-$filearea   = optional_param('filearea', null, PARAM_AREA);
-$itemid     = optional_param('itemid', null, PARAM_INT);
-$returnurl  = optional_param('returnurl', null, PARAM_LOCALURL);
+
+// File parameters.
+$component = optional_param('component', null, PARAM_COMPONENT);
+$filearea = optional_param('filearea', null, PARAM_AREA);
+$itemid = optional_param('itemid', null, PARAM_INT);
+$returnurl = optional_param('returnurl', null, PARAM_LOCALURL);
 
 list($context, $course) = get_context_info_array($contextid);
 

@@ -17,12 +17,11 @@
 /**
  * Concorsi library code.
  *
- * @package    local_concorsi
- * @copyright  2023 Roberto Pinna
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package   local_concorsi
+ * @copyright 2023 UPO www.uniupo.it
+ * @author    Roberto Pinna
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-defined('MOODLE_INTERNAL') || die;
 
 /**
  * Generate a random username
@@ -44,18 +43,19 @@ function local_concorsi_generate_username($length = 8) {
 
 /**
  * Add a user credential card to pdf
- * 
+ *
  * @param pdf $doc Pdf object
  * @param stdClass $user User object
+ * @param stdClass $course Course object
  *
  * @return void
- */ 
+ */
 function local_concorsi_add_user_card($doc, $user, $course) {
     if (!empty($user)) {
         $doc->AddPage();
-  
+
         $search = array('[[course_fullname]]');
-        $replace = array(format_string($course->fullname)); 
+        $replace = array(format_string($course->fullname));
         foreach ($user as $field => $value) {
             $search[] = '[[' . $field . ']]';
             $replace[] = format_string($value);
@@ -63,7 +63,7 @@ function local_concorsi_add_user_card($doc, $user, $course) {
 
         $htmltemplate = get_config('local_concorsi', 'usercardtemplate');
         $html = str_ireplace($search, $replace, $htmltemplate);
- 
+
         $doc->writeHTML($html, true, false, true, false, '');
 
         $doc->lastPage();
@@ -74,16 +74,19 @@ function local_concorsi_add_user_card($doc, $user, $course) {
 
 /**
  * Display usercard files for the course
- * 
+ *
  * @param int $courseid Course id
+ * @param int $contextid Context id
+ * @param string $component Component name
+ * @param string $filearea Filearea name
  *
  * @return void
- */ 
-function local_concorsi_display_usercards_files($courseid, $coursecontextid, $component, $filearea) {
+ */
+function local_concorsi_display_usercards_files($courseid, $contextid, $component, $filearea) {
     global $OUTPUT, $PAGE;
 
     $fs = get_file_storage();
-    $files = $fs->get_area_files($coursecontextid, $component, $filearea, $courseid);
+    $files = $fs->get_area_files($contextid, $component, $filearea, $courseid);
     if (!empty($files)) {
         echo html_writer::tag('h3', new lang_string('usercardfiles', 'local_concorsi'));
         echo html_writer::start_tag('ul', array('class' => 'usercardfiles'));
@@ -96,13 +99,13 @@ function local_concorsi_display_usercards_files($courseid, $coursecontextid, $co
                     $file->get_filearea(),
                     $file->get_itemid(),
                     $file->get_filepath(),
-                    $file->get_filename(),
+                    $filename,
                     true
                 );
-                $query = array('course' => $courseid, 'file' => $file->get_filename(), 'action' => 'delete');
+                $query = array('course' => $courseid, 'file' => $filename, 'action' => 'delete');
                 $urldelete = new moodle_url('/local/concorsi/manageusers.php', $query);
                 $downloadlink = html_writer::tag('a', $filename, array('href' => $urldownload));
-                $icon = $OUTPUT->action_icon($urldelete, new pix_icon('t/delete', get_string('delete'))); 
+                $icon = $OUTPUT->action_icon($urldelete, new pix_icon('t/delete', get_string('delete')));
                 $deletelink = html_writer::tag('a', $icon, array('href' => $url));
                 echo html_writer::tag('li', $downloadlink . '&nbsp;' . $deletelink);
             }

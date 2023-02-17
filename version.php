@@ -18,14 +18,15 @@
  * Version details
  *
  * @package   local_concorsi
- * @copyright 2023 and above Roberto Pinna
+ * @copyright 2023 UPO www.uniupo.it
+ * @author    Roberto Pinna
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2023020100;        // The current plugin version (Date: YYYYMMDDXX).
-$plugin->release   = '0.5';
-$plugin->maturity  = MATURITY_ALPHA;
-$plugin->requires  = 2022041900;        // Requires this Moodle version.
+$plugin->version = 2023020100;
+$plugin->release = '0.5';
+$plugin->maturity = MATURITY_ALPHA;
+$plugin->requires = 2022041900;         // Requires this Moodle version.
 $plugin->component = 'local_concorsi';  // Full name of the plugin (used for diagnostics).

@@ -17,9 +17,10 @@
 /**
  * Concorsi user management
  *
- * @package    local_concorsi
- * @copyright  2023 and above Roberto Pinna
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package   local_concorsi
+ * @copyright 2023 UPO www.uniupo.it
+ * @author    Roberto Pinna
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 require(__DIR__ . '/../../config.php');
@@ -53,7 +54,7 @@ $PAGE->set_pagelayout('course');
 $config = get_config('local_concorsi');
 
 $component = 'local_concorsi';
-$filearea  = 'usercards';
+$filearea = 'usercards';
 
 switch ($action) {
     case 'add':
@@ -124,10 +125,10 @@ switch ($action) {
                     $fileinfo = [
                         'contextid' => $context->id,
                         'component' => $component,
-                        'filearea'  => $filearea,
-                        'itemid'    => $course->id,
-                        'filepath'  => '/',
-                        'filename'  => $filename,
+                        'filearea' => $filearea,
+                        'itemid' => $course->id,
+                        'filepath' => '/',
+                        'filename' => $filename,
                     ];
                     $fs = get_file_storage();
                     $fs->create_file_from_pathname($fileinfo, $filepath);
