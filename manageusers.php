@@ -89,7 +89,12 @@ switch ($action) {
                 $doc->setPrintFooter(false);
                 $firstname = $name;
                 $lastname = implode('-', $date);
-                for ($i = 0; $i < $users; $i++) {
+                $base = 0;
+                $existingusers = $DB->get_records('user', array('firstname' => $firstname, 'lastname' => $lastname));
+                foreach ($existingusers as $existinguser) {
+                    $base = max($base, intval($existinguser->idnumber));
+                }
+                for ($i = 1; $i <= $users; $i++) {
                     $user = new stdClass();
                     do {
                         $user->username = local_concorsi_generate_username($config->usernamelength);
@@ -100,9 +105,7 @@ switch ($action) {
 
                     $user->firstname = $firstname;
                     $user->lastname = $lastname;
-                    do {
-                        $user->idnumber = local_concorsi_generate_username($config->usernamelength);
-                    } while ($DB->record_exists('user', array('idnumber' => $user->idnumber)));
+                    $user->idnumber = $base + $i;
                     $user->email = $user->username . '@' . $config->emaildomain;
                     $user->emailstop = 1;
                     $user->confirmed = 1;
@@ -120,7 +123,7 @@ switch ($action) {
                     $tempdir = make_temp_directory('core_plugin/local_concorsi') . '/';
                     $filepath = $tempdir . $filename;
 
-                    $doc->Output($filepath, 'FD');
+                    $doc->Output($filepath, 'F');
 
                     $fileinfo = [
                         'contextid' => $context->id,
