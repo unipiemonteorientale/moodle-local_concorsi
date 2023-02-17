@@ -87,7 +87,7 @@ function local_concorsi_display_usercards_files($courseid, $contextid, $componen
 
     $fs = get_file_storage();
     $files = $fs->get_area_files($contextid, $component, $filearea, $courseid);
-    if (!empty($files)) {
+    if (!empty($files) && (count($files) > 1)) {
         echo html_writer::tag('h3', new lang_string('usercardfiles', 'local_concorsi'));
         echo html_writer::start_tag('ul', array('class' => 'usercardfiles'));
         foreach ($files as $file) {
