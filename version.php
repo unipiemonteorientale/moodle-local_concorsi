@@ -25,8 +25,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version = 2023020100;
-$plugin->release = '0.5';
-$plugin->maturity = MATURITY_ALPHA;
+$plugin->version = 2023050900;
+$plugin->release = '1.0';
+$plugin->maturity = MATURITY_STABLE;
 $plugin->requires = 2022041900;         // Requires this Moodle version.
 $plugin->component = 'local_concorsi';  // Full name of the plugin (used for diagnostics).
