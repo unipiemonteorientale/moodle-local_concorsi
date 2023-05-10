@@ -101,7 +101,7 @@ switch ($action) {
                     } while ($DB->record_exists('user', array('username' => $user->username)));
                     $user->password = generate_password($config->passwordlength);
 
-                    $doc = local_concorsi_add_user_card($doc, $user, $course);
+                    $doc = local_concorsi_add_user_card($doc, $user, $course, $roleid);
 
                     $user->firstname = $firstname;
                     $user->lastname = $lastname;

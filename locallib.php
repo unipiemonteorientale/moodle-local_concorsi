@@ -50,12 +50,17 @@ function local_concorsi_generate_username($length = 8) {
  *
  * @return void
  */
-function local_concorsi_add_user_card($doc, $user, $course) {
+function local_concorsi_add_user_card($doc, $user, $course, $roleid) {
+    global $DB;
+
     if (!empty($user)) {
         $doc->AddPage();
 
         $search = array('[[course_fullname]]');
         $replace = array(format_string($course->fullname));
+        $search[] = '[[role]]';
+        $role = $DB->get_field('role', 'name', array('id' => $roleid));
+        $replace[] = format_string($role);
         foreach ($user as $field => $value) {
             $search[] = '[[' . $field . ']]';
             $replace[] = format_string($value);
