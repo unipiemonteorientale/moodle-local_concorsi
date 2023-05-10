@@ -47,6 +47,7 @@ function local_concorsi_generate_username($length = 8) {
  * @param pdf $doc Pdf object
  * @param stdClass $user User object
  * @param stdClass $course Course object
+ * @param int $roleid User role id
  *
  * @return void
  */
