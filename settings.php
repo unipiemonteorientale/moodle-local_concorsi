@@ -54,7 +54,7 @@ if ($hassiteconfig) {
     $page->add(new admin_setting_configtext('local_concorsi/emaildomain',
                 new lang_string('emaildomain', 'local_concorsi'),
                 new lang_string('configemaildomain', 'local_concorsi'),
-                'example.con'));
+                'example.com'));
 
     $page->add(new admin_setting_configtextarea('local_concorsi/usercardtemplate',
                 new lang_string('usercardtemplate', 'local_concorsi'),
