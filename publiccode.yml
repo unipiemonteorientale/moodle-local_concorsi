@@ -1,0 +1,84 @@
+# This repository adheres to the publiccode.yml standard by including this 
+# metadata file that makes public software easily discoverable.
+# More info at https://github.com/italia/publiccode.yml
+
+publiccodeYmlVersion: '0.2'
+categories:
+  - test-management
+  - accounting
+  - learning-management-system
+dependsOn:
+  open:
+    - name: Moodle
+      optional: false
+      version: ''
+      versionMax: ''
+      versionMin: '4.0'
+description:
+  en:
+    features:
+      - Create Moodle random anomynous users
+    genericName: Moodle local plugin
+    longDescription: |
+      Moodle local plugin that permits, to enabled users, to create random users
+      and enrol them to current course. 
+
+
+      It generates, and stores as Moodle file if needed, a pdf file with all
+      credentials created. 
+
+
+      This plugin is intended to use in public exams and is part of concorsi
+      plugin suite: Concorsi Theme, Concorsi local plugin and Concorsi quiz
+      report.
+
+
+      The plugin is developed for Moodle 4.0 and above.
+
+
+      Its develop was started by a joint venture of Università degli Studi di
+      Verona and Università degli Studi del Piemonte Orientale in order to
+      create a suite of Moodle plugin that can help Public Administrations to
+      manage public exams with Moodle.
+    shortDescription: |-
+      Enable Moodle managers to create random credential for user and enrol them
+      in current course. This plugin is useful to manage public exams
+developmentStatus: stable
+it:
+  conforme:
+    gdpr: true
+    lineeGuidaDesign: true
+    misureMinimeSicurezza: true
+    modelloInteroperabilita: true
+  countryExtensionVersion: '0.2'
+  piattaforme:
+    anpr: false
+    cie: false
+    pagopa: false
+    spid: false
+  riuso:
+    codiceIPA: uni_por
+landingURL: 'https://github.com/unipiemonteorientale/moodle-local_concorsi'
+legal:
+  license: GPL-3.0-or-later
+  mainCopyrightOwner: UPO - Università del Piemonte Orientale
+  repoOwner: Università del Piemonte Orientale
+localisation:
+  availableLanguages:
+    - en
+    - it
+  localisationReady: true
+maintenance:
+  contacts:
+    - email: roberto.pinna@uniupo.it
+      name: Roberto Pinna
+  type: internal
+name: moodle-local_concorsi
+outputTypes:
+  - application/pdf
+platforms:
+  - web
+releaseDate: '2023-04-21'
+softwareType: addon
+softwareVersion: '1.0'
+url: 'https://github.com/unipiemonteorientale/moodle-local_concorsi.git'
