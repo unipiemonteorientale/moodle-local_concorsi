@@ -5,10 +5,12 @@ It generates, and stores as Moodle file  if needed, a pdf file with all credenti
 This plugin is intended to use in public exams and is part of concorsi plugin suite:
 Concorsi Theme, Concorsi local plugin and Concorsi quiz report.
 
+This suite for conducting tests for public exams is the result of collaboration with the University of Verona.
+
 Requirements
 ------------
 
-This plugin requires Moodle 4.0.
+This plugin requires Moodle 4.0 and above.
 
 Installation
 ------------
