@@ -65,6 +65,7 @@ switch ($action) {
         $date = required_param_array('date', PARAM_INT);
         $users = required_param('users', PARAM_INT);
         $roleid = required_param('role', PARAM_INT);
+        $forcepasswordchange = optional_param('forcepasswordchange', 0, PARAM_INT);
 
         if ($users > 0) {
             $manual = null;
@@ -94,12 +95,13 @@ switch ($action) {
                 foreach ($existingusers as $existinguser) {
                     $base = max($base, intval($existinguser->idnumber));
                 }
+
                 for ($i = 1; $i <= $users; $i++) {
                     $user = new stdClass();
                     do {
                         $user->username = local_concorsi_generate_username($config->usernamelength);
                     } while ($DB->record_exists('user', array('username' => $user->username)));
-                    $user->password = generate_password($config->passwordlength);
+                    $user->password = local_concorsi_generate_password($config->passwordlength);
 
                     $doc = local_concorsi_add_user_card($doc, $user, $course, $roleid);
 
@@ -112,6 +114,10 @@ switch ($action) {
                     $user->mnethostid = $CFG->mnet_localhost_id;
 
                     $userid = user_create_user($user);
+
+                    if (!empty($forcepasswordchange)) {
+                        set_user_preference('auth_forcepasswordchange', 1, $userid);
+                    }
 
                     $manual->enrol_user($instance, $userid, $roleid, time(), 0);
 

@@ -69,7 +69,11 @@ class createusers_form extends moodleform {
                     $enabledroles[$roleid] = $role;
                 }
             }
-            $mform->addElement('select', 'role', get_string('role', 'local_concorsi'), $enabledroles);
+	        $mform->addElement('select', 'role', get_string('role', 'local_concorsi'), $enabledroles);
+
+            $mform->addElement('checkbox', 'forcepasswordchange', get_string('forcepasswordchange'));
+	        $mform->setDefault('forcepasswordchange', 0);
+
             $mform->addElement('hidden', 'course', $courseid);
             $mform->setType('course', PARAM_INT);
             $mform->addElement('hidden', 'action', 'add');
