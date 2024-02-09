@@ -78,7 +78,7 @@ outputTypes:
   - application/pdf
 platforms:
   - web
-releaseDate: '2023-04-21'
+releaseDate: '2023-10-20'
 softwareType: addon
-softwareVersion: '1.0'
+softwareVersion: '1.1'
 url: 'https://github.com/unipiemonteorientale/moodle-local_concorsi.git'
