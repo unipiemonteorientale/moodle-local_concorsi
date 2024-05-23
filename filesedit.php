@@ -37,7 +37,7 @@ $returnurl = optional_param('returnurl', null, PARAM_LOCALURL);
 
 list($context, $course) = get_context_info_array($contextid);
 
-$query = array('contextid' => $contextid, 'component' => $component, 'filearea' => $filearea, 'itemid' => $itemid);
+$query = ['contextid' => $contextid, 'component' => $component, 'filearea' => $filearea, 'itemid' => $itemid];
 $url = new moodle_url('/local/concorsi/filesedit.php', $query);
 
 require_login($course);
@@ -59,14 +59,15 @@ $PAGE->set_pagelayout('course');
 $browser = get_file_browser();
 
 $data = new stdClass();
-$options = array('subdirs' => 0, 'maxfiles' => -1, 'accepted_types' => '*', 'return_types' => FILE_INTERNAL);
+$options = ['subdirs' => 0, 'maxfiles' => -1, 'accepted_types' => '*', 'return_types' => FILE_INTERNAL];
 file_prepare_standard_filemanager($data, 'files', $options, $contextid, $component, $filearea, $itemid);
-$form = new files_edit_form(null, array('data' => $data,
-                                        'contextid' => $contextid,
-                                        'filearea' => $filearea,
-                                        'component' => $component,
-                                        'itemid' => $itemid,
-                                        'returnurl' => $returnurl)
+$form = new files_edit_form(null, ['data' => $data,
+                                   'contextid' => $contextid,
+                                   'filearea' => $filearea,
+                                   'component' => $component,
+                                   'itemid' => $itemid,
+                                   'returnurl' => $returnurl,
+                                  ]
                            );
 
 if ($form->is_cancelled()) {

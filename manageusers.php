@@ -30,13 +30,13 @@ require_once(__DIR__ . '/locallib.php');
 $courseid = required_param('course', PARAM_INT);
 $action = optional_param('action', '', PARAM_ALPHANUM);
 
-if (!$course = $DB->get_record('course', array('id' => $courseid))) {
+if (!$course = $DB->get_record('course', ['id' => $courseid])) {
     throw new \moodle_exception('coursemisconf');
 }
 
 require_login($course);
 
-$urlquery = array();
+$urlquery = [];
 if (!empty($course->id)) {
     $urlquery['course'] = $course->id;
 }
@@ -91,7 +91,7 @@ switch ($action) {
                 $firstname = $name;
                 $lastname = implode('-', $date);
                 $base = 0;
-                $existingusers = $DB->get_records('user', array('firstname' => $firstname, 'lastname' => $lastname));
+                $existingusers = $DB->get_records('user', ['firstname' => $firstname, 'lastname' => $lastname]);
                 foreach ($existingusers as $existinguser) {
                     $base = max($base, intval($existinguser->idnumber));
                 }
@@ -100,7 +100,7 @@ switch ($action) {
                     $user = new stdClass();
                     do {
                         $user->username = local_concorsi_generate_username($config->usernamelength);
-                    } while ($DB->record_exists('user', array('username' => $user->username)));
+                    } while ($DB->record_exists('user', ['username' => $user->username]));
                     $user->password = local_concorsi_generate_password($config->passwordlength);
 
                     $doc = local_concorsi_add_user_card($doc, $user, $course, $roleid);
@@ -123,7 +123,7 @@ switch ($action) {
 
                 }
 
-                $rolename = $DB->get_field('role', 'shortname', array('id' => $roleid));
+                $rolename = $DB->get_field('role', 'shortname', ['id' => $roleid]);
                 $filename = clean_param($firstname . '_' . $lastname . '_' . $rolename . '_' . time()  . '.pdf', PARAM_FILE);
                 if ($config->localstore) {
                     $tempdir = make_temp_directory('core_plugin/local_concorsi') . '/';
@@ -169,8 +169,8 @@ $PAGE->set_heading($strmanageusers);
 
 echo $OUTPUT->header();
 
-$createusers = new createusers_form(null, array('courseid' => $course->id));
-echo html_writer::start_tag('div', array('class' => 'createusers'));
+$createusers = new createusers_form(null, ['courseid' => $course->id]);
+echo html_writer::start_tag('div', ['class' => 'createusers']);
 $createusers->display();
 echo html_writer::end_tag('div');
 

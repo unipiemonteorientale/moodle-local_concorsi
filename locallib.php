@@ -125,10 +125,10 @@ function local_concorsi_add_user_card($doc, $user, $course, $roleid) {
     if (!empty($user)) {
         $doc->AddPage();
 
-        $search = array('[[course_fullname]]');
-        $replace = array(format_string($course->fullname));
+        $search = ['[[course_fullname]]'];
+        $replace = [format_string($course->fullname)];
         $search[] = '[[role]]';
-        $role = $DB->get_field('role', 'name', array('id' => $roleid));
+        $role = $DB->get_field('role', 'name', ['id' => $roleid]);
         $replace[] = format_string($role);
         foreach ($user as $field => $value) {
             $search[] = '[[' . $field . ']]';
@@ -163,7 +163,7 @@ function local_concorsi_display_usercards_files($courseid, $contextid, $componen
     $files = $fs->get_area_files($contextid, $component, $filearea, $courseid);
     if (!empty($files) && (count($files) > 1)) {
         echo html_writer::tag('h3', new lang_string('usercardfiles', 'local_concorsi'));
-        echo html_writer::start_tag('ul', array('class' => 'usercardfiles'));
+        echo html_writer::start_tag('ul', ['class' => 'usercardfiles']);
         foreach ($files as $file) {
             $filename = $file->get_filename();
             if ($filename != '.') {
@@ -176,11 +176,11 @@ function local_concorsi_display_usercards_files($courseid, $contextid, $componen
                     $filename,
                     true
                 );
-                $query = array('course' => $courseid, 'file' => $filename, 'action' => 'delete');
+                $query = ['course' => $courseid, 'file' => $filename, 'action' => 'delete'];
                 $urldelete = new moodle_url('/local/concorsi/manageusers.php', $query);
-                $downloadlink = html_writer::tag('a', $filename, array('href' => $urldownload));
+                $downloadlink = html_writer::tag('a', $filename, ['href' => $urldownload]);
                 $icon = $OUTPUT->action_icon($urldelete, new pix_icon('t/delete', get_string('delete')));
-                $deletelink = html_writer::tag('a', $icon, array('href' => $urldelete));
+                $deletelink = html_writer::tag('a', $icon, ['href' => $urldelete]);
                 echo html_writer::tag('li', $downloadlink . '&nbsp;' . $deletelink);
             }
         }

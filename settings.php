@@ -31,7 +31,7 @@ if ($hassiteconfig) {
 
     $coursecontext = context_course::instance(SITEID);
     $roles = get_assignable_roles($coursecontext, ROLENAME_BOTH);
-    $default = array();
+    $default = [];
     $page->add(new admin_setting_configmultiselect('local_concorsi/roles',
                 new lang_string('roles', 'local_concorsi'),
                 new lang_string('configroles', 'local_concorsi'),
@@ -70,7 +70,7 @@ if ($hassiteconfig) {
                 new lang_string('configusercardtemplate', 'local_concorsi'),
                 '[[username]] - [[password]]'));
 
-    $yesno = array(0 => new lang_string('no'), 1 => new lang_string('yes'));
+    $yesno = [0 => new lang_string('no'), 1 => new lang_string('yes')];
     $page->add(new admin_setting_configselect('local_concorsi/localstore',
                 new lang_string('localstore', 'local_concorsi'),
                 new lang_string('configlocalstore', 'local_concorsi'),

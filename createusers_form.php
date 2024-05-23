@@ -48,7 +48,7 @@ class createusers_form extends moodleform {
         $courseid = $this->_customdata['courseid'];
 
         if (!empty($courseid)) {
-            $course = $DB->get_record('course', array('id' => $courseid));
+            $course = $DB->get_record('course', ['id' => $courseid]);
 
             $mform->addElement('text', 'name', get_string('publicexamname', 'local_concorsi'));
             $mform->setDefault('name', $course->shortname);
@@ -63,16 +63,16 @@ class createusers_form extends moodleform {
 
             $roles = get_assignable_roles($PAGE->context, ROLENAME_BOTH);
             $configroles = explode(',', get_config('local_concorsi', 'roles'));
-            $enabledroles = array();
+            $enabledroles = [];
             foreach ($roles as $roleid => $role) {
                 if (in_array($roleid, $configroles)) {
                     $enabledroles[$roleid] = $role;
                 }
             }
-	        $mform->addElement('select', 'role', get_string('role', 'local_concorsi'), $enabledroles);
+            $mform->addElement('select', 'role', get_string('role', 'local_concorsi'), $enabledroles);
 
             $mform->addElement('checkbox', 'forcepasswordchange', get_string('forcepasswordchange'));
-	        $mform->setDefault('forcepasswordchange', 0);
+            $mform->setDefault('forcepasswordchange', 0);
 
             $mform->addElement('hidden', 'course', $courseid);
             $mform->setType('course', PARAM_INT);

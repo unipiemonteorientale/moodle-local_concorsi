@@ -35,7 +35,7 @@ function local_concorsi_extend_navigation_course(navigation_node $parentnode, $c
 
     if (has_capability('local/concorsi:manageusers', $context)) {
         $manageuserstr = get_string('manageusers', 'local_concorsi');
-        $url = new moodle_url('/local/concorsi/manageusers.php', array('course' => $course->id));
+        $url = new moodle_url('/local/concorsi/manageusers.php', ['course' => $course->id]);
         $nodetype = navigation_node::NODETYPE_LEAF;
         $node = $parentnode->add($manageuserstr, $url, $nodetype, $manageuserstr, 'concorsi_manage');
     }

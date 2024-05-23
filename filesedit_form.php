@@ -44,7 +44,7 @@ class files_edit_form extends moodleform {
         $mform =& $this->_form;
 
         $types = FILE_INTERNAL;
-        $options = array('subdirs' => 0, 'maxfiles' => -1, 'accepted_types' => '*', 'return_types' => $types);
+        $options = ['subdirs' => 0, 'maxfiles' => -1, 'accepted_types' => '*', 'return_types' => $types];
 
         $mform->addElement('filemanager', 'files_filemanager', get_string('files'), null, $options);
 

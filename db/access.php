@@ -25,16 +25,14 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$capabilities = array(
-
-    'local/concorsi:manageusers' => array(
+$capabilities = [
+    'local/concorsi:manageusers' => [
         'riskbitmask' => RISK_PERSONAL,
-
         'captype' => 'write',
         'contextlevel' => CONTEXT_SYSTEM,
-        'archetypes' => array(
+        'archetypes' => [
             'manager' => CAP_ALLOW,
-            'coursecreator' => CAP_ALLOW
-        ),
-    ),
-);
+            'coursecreator' => CAP_ALLOW,
+        ],
+    ],
+];
