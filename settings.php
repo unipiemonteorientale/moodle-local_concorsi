@@ -37,8 +37,8 @@ if ($hassiteconfig) {
                 new lang_string('configroles', 'local_concorsi'),
                 $default, $roles));
 
-    $choices = array();
-    for ($i = 4; $i <= 20; $i++) {
+    $choices = [];
+    for ($i = 8; $i <= 20; $i++) {
         $choices[$i] = $i;
     }
     $page->add(new admin_setting_configselect('local_concorsi/usernamelength',
@@ -51,10 +51,14 @@ if ($hassiteconfig) {
                 new lang_string('configpasswordlength', 'local_concorsi'),
                 '8', $choices));
 
+    $choices = [];
+    for ($i = 2; $i <= 15; $i++) {
+        $choices[$i] = $i;
+    }
     $page->add(new admin_setting_configselect('local_concorsi/idnumberlength',
                 new lang_string('idnumberlength', 'local_concorsi'),
                 new lang_string('configidnumberlength', 'local_concorsi'),
-                '6', $choices));
+                '4', $choices));
 
     $page->add(new admin_setting_configtext('local_concorsi/emaildomain',
                 new lang_string('emaildomain', 'local_concorsi'),
