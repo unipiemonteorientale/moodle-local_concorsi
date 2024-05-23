@@ -107,7 +107,7 @@ switch ($action) {
 
                     $user->firstname = $firstname;
                     $user->lastname = $lastname;
-                    $user->idnumber = $base + $i;
+                    $user->idnumber = str_pad($base + $i, $config->idnumberlength, "0", STR_PAD_LEFT);
                     $user->email = $user->username . '@' . $config->emaildomain;
                     $user->emailstop = 1;
                     $user->confirmed = 1;
